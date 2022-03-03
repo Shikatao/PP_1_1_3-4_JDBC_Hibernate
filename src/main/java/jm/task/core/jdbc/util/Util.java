@@ -6,18 +6,31 @@ public class Util {
     private static final String DB_URl = "jdbc:mysql://localhost:3306/mydbtest";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "root";
+    private static Connection connection = null;
 
 
-    public static Connection getConnection() {
-        Connection connection = null;
-
+    private static void openConnection() {
         try {
             connection = DriverManager.getConnection(DB_URl, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return connection;
         // реализуйте настройку соеденения с БД
+    }
+
+    public static Connection getConnection() {
+        openConnection();
+        return connection;
+    }
+
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException ignored) {
+
+            }
+        }
     }
 
     public static void rollbackQuietly(Connection connection) {
@@ -44,16 +57,6 @@ public class Util {
         if (stmt != null) {
             try {
                 stmt.close();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void disconnection(Connection connection) {
-        if (connection != null) {
-            try {
-                connection.close();
             } catch (SQLException ignored) {
 
             }

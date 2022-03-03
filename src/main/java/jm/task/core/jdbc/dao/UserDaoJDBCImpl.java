@@ -18,7 +18,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     public void createUsersTable() {
         Statement createTable = null;
 
-
         try {
             connection.setAutoCommit(false);
             createTable = connection.createStatement();
@@ -135,4 +134,5 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             closeQuietly(cleanTable);
         }
     }
+
 }
