@@ -29,6 +29,7 @@ public class Main {
         }
         userService.cleanUsersTable();
         userService.dropUsersTable();
-        Util.closeConnection();// реализуйте алгоритм здесь
+//        Util.closeConnection();// реализуйте алгоритм здесь
+        Util.closeSessionFactory();
     }
 }
