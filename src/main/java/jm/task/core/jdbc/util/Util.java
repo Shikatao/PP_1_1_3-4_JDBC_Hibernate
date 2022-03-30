@@ -32,35 +32,4 @@ public class Util {
             }
         }
     }
-
-    public static void rollbackQuietly(Connection connection) {
-        if (connection != null) {
-            try {
-                connection.rollback();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void closeQuietly(ResultSet rs) {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void closeQuietly(Statement stmt) {
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
 }
