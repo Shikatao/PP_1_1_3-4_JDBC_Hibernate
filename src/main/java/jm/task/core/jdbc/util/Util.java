@@ -20,7 +20,7 @@ public class Util {
     private static final String DB_PASSWORD = "root";
     private static Connection connection = null;
 
-    private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory = null;
 
     private static void openConnection() {
         try {
@@ -43,36 +43,6 @@ public class Util {
             try {
                 connection.close();
                 connection = null;
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void rollbackQuietly(Connection connection) {
-        if (connection != null) {
-            try {
-                connection.rollback();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void closeQuietly(ResultSet rs) {
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException ignored) {
-
-            }
-        }
-    }
-
-    public static void closeQuietly(Statement stmt) {
-        if (stmt != null) {
-            try {
-                stmt.close();
             } catch (SQLException ignored) {
 
             }
